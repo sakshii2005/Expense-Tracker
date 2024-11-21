@@ -1,5 +1,4 @@
 
-import java.io.*;
 import java.util.*;
 
 class Expense {
@@ -71,41 +70,19 @@ class ExpenseTracker {
             System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
-    
-    public void saveExpensesToFile(String filename) {
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filename))) {
-            out.writeObject(expenses);
-            System.out.println("Expenses saved to file.");
-        } catch (IOException e) {
-            System.out.println("Error saving expenses: " + e.getMessage());
-        }
-    }
-    
-    public void loadExpensesFromFile(String filename) {
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filename))) {
-            expenses = (List<Expense>) in.readObject();
-            System.out.println("Expenses loaded from file.");
-        } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Error loading expenses: " + e.getMessage());
-        }
-    }
 }
 
 public class ExpenseTrackerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ExpenseTracker tracker = new ExpenseTracker();
-        String filename = "expenses.dat";
-        
-        tracker.loadExpensesFromFile(filename);  // Load expenses from file if any
         
         while (true) {
             System.out.println("\n------ Expense Tracker ------");
             System.out.println("1. Add Expense");
             System.out.println("2. View Expenses");
             System.out.println("3. Generate Expense Report");
-            System.out.println("4. Save Expenses");
-            System.out.println("5. Exit");
+            System.out.println("4. Exit");
             System.out.print("Enter your choice: ");
             
             int choice = scanner.nextInt();
@@ -129,10 +106,6 @@ public class ExpenseTrackerApp {
                     tracker.generateReport();
                     break;
                 case 4:
-                    tracker.saveExpensesToFile(filename);
-                    break;
-                case 5:
-                    tracker.saveExpensesToFile(filename);  // Save before exiting
                     System.out.println("Exiting Expense Tracker. Goodbye!");
                     return;
                 default:
