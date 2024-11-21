@@ -1,1 +1,1 @@
-# Expense-Tracker
+The Expense Tracker is a simple yet powerful application designed to help individuals track their daily expenses. This project is built using Object-Oriented Programming (OOP) principles in Java, with a focus on encapsulation, data persistence, and user interaction through the console.
